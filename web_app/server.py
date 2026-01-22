@@ -19,6 +19,45 @@ templates = Jinja2Templates(directory="web_app/templates")
 # Data Storage
 REVIEWS_FILE = "web_app/reviews.json"
 
+# Team Data from teams.txt
+TEAM_MEMBERS = [
+    {
+        "name": "Shailendra Mani Pandey",
+        "role": "Cse 2024022015 3rd year",
+        "image": "Shailendra.jpeg"
+    },
+    {
+        "name": "Vaibhav Singh",
+        "role": "Cse 2024022018 3rd year",
+        "image": "default.jpg"
+    },
+    {
+        "name": "Suyash Shukla",
+        "role": "Cse 2023021260 3rd year",
+        "image": "suyash.jpeg"
+    },
+    {
+        "name": "Divyanshu Nath Tripathi",
+        "role": "Cse 2024022006 3rd year",
+        "image": "default.jpg"
+    },
+    {
+        "name": "Ankur Kumar",
+        "role": "Cse 2024022003 3rd year",
+        "image": "Ankur.jpeg"
+    },
+    {
+        "name": "Kartikey Singh",
+        "role": "Cse 2024022010 3rd year",
+        "image": "Kartikey.jpeg"
+    },
+    {
+        "name": "Govind Verma",
+        "role": "Cse 2024022007 3rd year",
+        "image": "default.jpg"
+    }
+]
+
 def load_reviews():
     if os.path.exists(REVIEWS_FILE):
         try:
@@ -44,6 +83,10 @@ async def read_root(request: Request):
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request):
     return templates.TemplateResponse("dashboard.html", {"request": request})
+
+@app.get("/about", response_class=HTMLResponse)
+async def about(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request, "team": TEAM_MEMBERS})
 
 @app.post("/submit_review")
 async def submit_review(
