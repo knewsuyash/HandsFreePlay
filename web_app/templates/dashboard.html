@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | HandsFreePlay</title>
+    <title>🎧 Dashboard | HandsFreePlay</title>
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3a7/512.gif" type="image/gif">
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <div class="container">
         <header>
-            <div class="brand glitch">HANDS_FREE_PLAY</div>
+            <div class="brand">
+                <span style="font-size: 2.5rem;">🎧</span>
+                HANDS_FREE_PLAY <span class="cursor-blink"></span>
+            </div>
             <nav>
-                <a href="/">HOME</a>
-                <a href="/dashboard">DASHBOARD</a>
-                <a href="/logout">LOGOUT</a>
+                <a href="/">// HOME</a>
+                <a href="/dashboard">// DASHBOARD</a>
+                <a href="/logout">// LOGOUT</a>
             </nav>
         </header>
 
-        <h2 style="margin-bottom: 2rem; color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">// CONTROL_CENTER</h2>
+        <h2 style="margin-bottom: 2rem; color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">//
+            CONTROL_CENTER</h2>
 
         <div class="grid">
             <!-- Game Profiles Section -->
             <div class="card" style="grid-column: span 2;">
                 <h3>> ACTIVE_PROFILES</h3>
-                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
                     <div style="border: 1px solid var(--grid-color); padding: 1rem;">
                         <span class="status-badge">DEFAULT</span>
-                        <h4>Desktop Interaction</h4>
-                        <p>Mouse Cursor + Click Gestures</p>
+                        <h4 style="margin-top: 5px;">Desktop Interaction</h4>
+                        <p style="font-size: 1rem;">Mouse Cursor + Click Gestures</p>
                     </div>
                     <div style="border: 1px solid var(--grid-color); padding: 1rem;">
-                        <span class="status-badge">FPS MODE</span>
-                        <h4>Counter-Strike 2</h4>
-                        <p>WASD Movement + Trigger Finger</p>
+                        <span class="status-badge" style="background: var(--neon-pink);">FPS MODE</span>
+                        <h4 style="margin-top: 5px;">Counter-Strike 2</h4>
+                        <p style="font-size: 1rem;">WASD Movement + Trigger Finger</p>
                     </div>
                     <div style="border: 1px solid var(--grid-color); padding: 1rem;">
-                        <span class="status-badge">RACING MODE</span>
-                        <h4>Asphalt 9</h4>
-                        <p>Virtual Steering Wheel (Tilt)</p>
+                        <span class="status-badge" style="background: orange;">RACING MODE</span>
+                        <h4 style="margin-top: 5px;">Asphalt 9</h4>
+                        <p style="font-size: 1rem;">Virtual Steering Wheel (Tilt)</p>
                     </div>
                 </div>
             </div>
@@ -45,33 +52,27 @@
             <!-- Review Section -->
             <div class="card">
                 <h3>> TRANSMIT_FEEDBACK</h3>
-                <form id="review-form">
+                <form action="/submit_review" method="post">
                     <label>> USER_ALIAS</label>
-                    <input type="text" placeholder="Enter Gamertag..." required>
-                    
+                    <input type="text" name="gamertag" placeholder="Enter Gamertag..." required>
+
                     <label>> RATING</label>
-                    <select>
-                        <option>5_STARS [LEGENDARY]</option>
-                        <option>4_STARS [EPIC]</option>
-                        <option>3_STARS [RARE]</option>
-                        <option>2_STARS [COMMON]</option>
-                        <option>1_STAR [TRASH]</option>
+                    <select name="rating">
+                        <option value="5_STARS [LEGENDARY]">5_STARS [LEGENDARY]</option>
+                        <option value="4_STARS [EPIC]">4_STARS [EPIC]</option>
+                        <option value="3_STARS [RARE]">3_STARS [RARE]</option>
+                        <option value="2_STARS [COMMON]">2_STARS [COMMON]</option>
+                        <option value="1_STAR [TRASH]">1_STAR [TRASH]</option>
                     </select>
 
                     <label>> MESSAGE_LOG</label>
-                    <textarea rows="4" placeholder="System report..." required></textarea>
+                    <textarea name="message" rows="4" placeholder="System report..." required></textarea>
 
                     <button type="submit" class="btn" style="width: 100%;">UPLOAD_PACKET</button>
                 </form>
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('review-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('PACKET UPLOADED TO MAINFRAME. THANK YOU, OPERATOR.');
-        });
-    </script>
 </body>
+
 </html>

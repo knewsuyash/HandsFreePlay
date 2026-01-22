@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HandsFreePlay | Nexus</title>
+    <title>🎧 HandsFreePlay | Nexus</title>
+    <!-- Favicon: Headphone Emoji SVG -->
+    <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3a7/512.gif" type="image/gif">
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <div class="container">
         <header>
-            <div class="brand glitch">HANDS_FREE_PLAY</div>
+            <div class="brand">
+                <span style="font-size: 2.5rem;">🎧</span>
+                HANDS_FREE_PLAY <span class="cursor-blink"></span>
+            </div>
             <nav>
-                <a href="/">HOME</a>
-                <a href="/dashboard">DASHBOARD</a>
-                <a href="https://github.com/Govind-Verma07/mini-Project" target="_blank">GITHUB</a>
+                <a href="/">// HOME</a>
+                <a href="/dashboard">// DASHBOARD</a>
+                <a href="https://github.com/Govind-Verma07/mini-Project" target="_blank">// GITHUB</a>
             </nav>
         </header>
 
         <section class="hero">
-            <h1 class="glitch">UNLEASH TELEKINESIS</h1>
-            <p>> SYSTEM STATUS: ONLINE<br>> CONTROL GAMES WITH GESTURES<br>> NO CONTROLLER REQUIRED</p>
+            <h1>UNLEASH TELEKINESIS</h1>
+            <p>> SYSTEM STATUS: ONLINE | GESTURE CONTROL: ACTIVE</p>
             <br>
-            <a href="#" class="btn">INITIALIZE DOWNLOAD</a>
+            <a href="/download" class="btn">⬇ INITIALIZE DOWNLOAD_CLIENT.ZIP</a>
         </section>
 
         <div class="grid">
@@ -38,6 +45,39 @@
                 <p>Fully customizable WASD, Mouse, and Racing configurations supported.</p>
             </div>
         </div>
+
+        <!-- Reviews / Community Transmissions -->
+        <h2 style="margin-top: 5rem; color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green);">
+            > INCOMING_TRANSMISSIONS (COMMUNITY)
+        </h2>
+
+        <div class="grid">
+            {% for review in reviews %}
+            <div class="review-card card">
+                <div class="review-header">
+                    <span>{{ review.gamertag }}</span>
+                    <span>{{ review.rating }}</span>
+                </div>
+                <p>"{{ review.message }}"</p>
+                <small style="color: #666;">Received: {{ review.timestamp }}</small>
+            </div>
+            {% else %}
+            <div class="card" style="border-color: #333;">
+                <p>> No transmissions received yet. Be the first.</p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+
+    <!-- Simple Notification if redirected from review -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success')) {
+            alert('TRANSMISSION RECEIVED. FEEDBACK LOGGED.');
+            // Clean URL
+            window.history.replaceState({}, document.title, "/");
+        }
+    </script>
 </body>
+
 </html>
